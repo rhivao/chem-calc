@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chemistry Calculator — UMIT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="overlay" onclick="closeSidebar()"></div>
+
+  <!-- Mobile Header -->
+  <header id="mobile-header">
+    <button id="hamburger" onclick="toggleSidebar()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="mobile-logo">Chem<em>Calc</em></div>
+    <button id="home-mobile-btn" onclick="goHome()" aria-label="Home" title="Home">⌂</button>
+  </header>
+
+  <!-- Sidebar -->
+  <aside id="sidebar">
+    <div class="sidebar-brand" onclick="goHome()" role="button" tabindex="0">
+      <div class="brand-atom">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="20" cy="20" rx="18" ry="7.5" stroke="#D16BA5" stroke-width="1.4" opacity="0.85"/>
+          <ellipse cx="20" cy="20" rx="18" ry="7.5" stroke="#86A8E7" stroke-width="1.4" transform="rotate(60 20 20)" opacity="0.6"/>
+          <ellipse cx="20" cy="20" rx="18" ry="7.5" stroke="#FEC8D8" stroke-width="1.4" transform="rotate(120 20 20)" opacity="0.45"/>
+          <circle cx="20" cy="20" r="3.5" fill="#D16BA5"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <div class="brand-name">ChemCalc</div>
+        <div class="brand-sub">UMIT · Sem II</div>
+      </div>
+    </div>
+
+    <div class="sidebar-search"> <input type="text" id="search-input" placeholder="Search formula…" oninput="filterSidebar(this.value)" autocomplete="off" /> </div>
+
+    <nav class="sidebar-nav" id="sidebar-nav"></nav>
+
+    <div class="sidebar-footer">
+      <div class="sf-course">BT‑101 · Applied Chemistry</div>
+      <div class="sf-inst">Usha Mittal Inst. of Technology</div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main id="main">
+
+    <!-- HOME VIEW --> <section id="home-view"> <div class="home-bg-glow g1"></div> <div class="home-bg-glow g2"></div> <div class="home-inner"> <div class="home-eyebrow">BT-101 · Applied Chemistry · B.Tech Sem II</div> <h1 class="home-title">Chemistry<br/><em>Calculator</em></h1> <p class="home-subtitle"> Four modules. Every syllabus formula. Precision calculations for Usha Mittal Institute of Technology. </p> <div class="module-grid" id="home-grid"></div> <div class="home-stats"> <div class="stat"><span class="stat-n">4</span><span class="stat-l">Modules</span></div> <div class="stat-div"></div> <div class="stat"><span class="stat-n">30</span><span class="stat-l">Credit Hours</span></div> <div class="stat-div"></div> <div class="stat"><span class="stat-n">100%</span><span class="stat-l">Syllabus</span></div> </div> </div> </section>
+
+    <!-- CALC VIEW --> <section id="calc-view" style="display:none;"> <div class="breadcrumb"> <button class="bc-home" onclick="goHome()">⌂ Home</button> <span class="bc-sep">›</span> <span class="bc-mod" id="bc-module"></span> <span class="bc-sep">›</span> <span class="bc-cur" id="bc-current"></span> </div> <div class="formula-header"> <div class="fh-tag" id="fh-tag"></div> <h2 class="fh-title" id="fh-title"></h2> <p class="fh-desc" id="fh-desc"></p> </div> <div class="formula-box" id="formula-box"> <div class="fb-eq" id="fb-eq"></div> <div class="fb-vars" id="fb-vars"></div> </div> <div class="calc-layout"> <div class="inputs-col"> <div class="inputs-title">Enter Values</div> <div id="input-grid"></div> <p class="error-msg" id="error-msg"></p> <div class="btn-row"> <button class="btn-calc" onclick="calculate()">⚗ Calculate</button> <button class="btn-reset" onclick="resetCalc()">↺ Reset</button> </div> </div> <div class="result-col" id="result-col"> <div class="result-idle" id="result-idle"> <div class="ri-symbol">∑</div> <p>Enter values and press <strong>Calculate</strong></p> </div> <div class="result-card" id="result-card" style="display:none;"> <div class="rc-eyebrow">Result</div> <div class="rc-value" id="rc-value"></div> <div class="rc-unit" id="rc-unit"></div> <hr class="rc-hr"/> <div class="rc-interp" id="rc-interp"></div> <div class="rc-steps" id="rc-steps"></div> </div> </div> </div> </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
